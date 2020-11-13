@@ -11,11 +11,28 @@ class Stack
 
     def pop
       # removes one element from the stack
-      @stack.pop(el)
+      @stack.pop
     end
 
     def peek
       # returns, but doesn't remove, the top element in the stack
       @stack[-1]
+    end
+  end
+
+  class Queue
+    def initialize
+      @queue = Array.new
+    end
+    
+    def enqueue(el)
+      @queue.unshift(el)
+    end
+    
+    def dequeue
+      @queue.shift
+    end
+    def peek
+      @queue[0]
     end
   end
