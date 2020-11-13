@@ -36,3 +36,29 @@ class Stack
       @queue[0]
     end
   end
+
+  class Map
+      def initialize
+        @map = Array.new
+      end
+
+      def set(key,val)
+        if @map.none?{|pair| pair[0] == key}
+          @map << [key,val]
+        else
+          @map.each {|pair| pair[1] = val if pair[0] == key}
+        end
+      end
+      
+      def get(key)
+        @map.each {|pair| return pair if pair[0] == key}
+      end
+      
+      def delete(key)
+        @map.reject! {|pair| pair[0] == key}
+      end
+      
+      def show
+        p @map
+      end
+  end
