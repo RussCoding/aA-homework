@@ -8,19 +8,18 @@ def sluggish_octopus(fish)
     answer
 end
 
-def merge_sort (array, &prc)
+def merge_sort (array)
     return array if array.length <= 1
 
     mid_idx = array.length / 2
     merge(
-      merge_sort(array.take(mid_idx), &prc),
-      merge_sort(array.drop(mid_idx), &prc),
-      &prc
+
+            merge_sort(array.take(mid_idx)),
+            merge_sort(array.drop(mid_idx)),
     )
   end
 
-  # NB: In Ruby, shift is an O(1) operation. This is not true of all languages.
-  def merge(left, right, &prc)
+  def merge(left, right)
     merged_array = []
     prc = Proc.new { |num1, num2| num1 <=> num2 } unless block_given?
     until left.empty? || right.empty?
